@@ -137,7 +137,7 @@ mosaic_nircam_f150w_COSMOS-Web_30mas_A9_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS
     return(image_table)
 
 
-def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , verbose , suppress_warnings):
+def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_fraction_limit , keynames , verbose , suppress_warnings):
     '''
     Creates cutouts for an JWST image for all sources in a catalog for which there is overlap.
     Stores the cutouts in a directory with user-defined naming.
@@ -153,10 +153,15 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
         List of HDU extension names (or numbers) for which cutouts are created.
         Note that they all will end up in a single FITS as extensions. The first
         HDU extension in this list must contain the WCS information (for WCS and pixel scale).
+        For example: hduexts=["SCI","ERR","WHT","VAR_POISSON","VAR_RNOISE","VAR_FLAT"]
     output_path: `str`
         Path to the directory where to save the cutouts
     cutout_size_arcsec: `float`
         Size of cutouts in ARCSECONDS
+    overlap_fraction_limit: `float`
+        Overlap fraction. For example 0.7 would mean 70% overlap is required. Note: do not
+        set this too high (i.e., 1.0) as there could be random pixels set to 0. A value of 
+        0.7 is probably best.
     keynames: `list` [`str`]
         List of key names in catalog for columns of object names, R.A., and Decl. For 
         example ["NUMBER","ALPHA_J2000","DELTA_J2000"]
@@ -175,7 +180,10 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
     - Flag (0=good, 1=something wrong, 2=no overlap)
     
     '''
-
+    #overlap_fraction_limit = 0.7
+    nan_fraction_limit = overlap_fraction_limit*1.0
+    
+    
     if suppress_warnings: warnings.filterwarnings("ignore")
 
 
@@ -242,7 +250,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
                     # FLAG = 0 if everything is OK
                     # FLAG = 1 if no cutout can be created because of any error (e.g., negative
                     # coordinate because the source is in the wrong fiels such as GOODS-N vs. COSMOS)
-                    # FLAG = 2 if no cutout can be create because not enough overlap
+                    # FLAG = 2 if no cutout can be create because not enough overlap (user defined)
                     FLAG = 0
                     try:
 
@@ -251,9 +259,10 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
                         tmp = Cutout2D(hdul[hduext].data, position, size, wcs=hdr0_wcs , copy=True, mode="partial")
                         cutout = tmp.data
 
-                        overlap_fraction = 1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1])
-                        fraction_nan = len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1])
-                        if (overlap_fraction < 0.6) | (fraction_nan > 0.6):
+                        # check overlap (if cutting is successful)
+                        overlap_fraction = round(1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1]),1)
+                        fraction_nan = round(len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1]),1)
+                        if (overlap_fraction < overlap_fraction_limit) | (fraction_nan > nan_fraction_limit):
                             if verbose > 1: print("-> Not enough overlap ({}) or too many NaN ({}) to create cutout.".format(overlap_fraction,fraction_nan))
                             FLAG = 2
 
@@ -262,8 +271,11 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
                         FLAG = 1
 
                     
-                    # Assemble this part of the HDU and append
-                    if FLAG == 0:
+                    # Assemble this part of the HDU and append.
+                    # Note that in some cases, the SCI HDU is created, but others are not
+                    # because of slightly different overlap. In that case, we can probably
+                    # still create the HDUL
+                    if (FLAG == 0) | (FLAG == 2):
                         
                         # Make the first HDU extension the primary.
                         if hh == 0:
@@ -291,8 +303,16 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
 
 
                 ## Went through all the extensions, now put everything together... if there
-                # are no errors, i.e., all FLAGS are 0 (I don't think mixture happens.)
-                if np.sum(FLAGS[0]) == 0:
+                # are no errors. Do not create cutout if the SCI flag is other than 0. However,
+                # check that the user is requesting a SCI extension. If not, only create cutout
+                # if FLAGS[0]==0 and none of the FLAGS is 2.
+                if verbose > 2: print("Flags: ", FLAGS)
+                if "SCI" in hduexts:
+                    sel_hdu_test = np.where(np.asarray(hduexts) == "SCI")[0][0]
+                else:
+                    sel_hdu_test = 0
+                
+                if (FLAGS[sel_hdu_test] == 0) & (2 not in FLAGS):
                     
                     # cutout name
                     cutout_name = "{}-{}.fits".format( src[keynames[0]] , this_image_identfier )
@@ -302,7 +322,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , keynames , v
                     hdul_new = fits.HDUList(hdus_new)
                     hdul_new.writeto(os.path.join( output_path , cutout_name ) , overwrite=True)
                     
-                this_tab.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],this_image_identfier,FLAGS[0] ])
+                this_tab.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],this_image_identfier,FLAGS[sel_hdu_test] ])
 
 
         ## Add this table to dictionary (containing all individual tables)
