@@ -306,13 +306,15 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
                 # are no errors. Do not create cutout if the SCI flag is other than 0. However,
                 # check that the user is requesting a SCI extension. If not, only create cutout
                 # if FLAGS[0]==0 and none of the FLAGS is 2.
-                if verbose > 2: print("Flags: ", FLAGS)
+                if verbose > 2: print("-> Flags: ", FLAGS)
                 if "SCI" in hduexts:
                     sel_hdu_test = np.where(np.asarray(hduexts) == "SCI")[0][0]
                 else:
                     sel_hdu_test = 0
                 
                 if (FLAGS[sel_hdu_test] == 0) & (2 not in FLAGS):
+
+                    if verbose >=0: print("-> Creating final cutout for {}".format(src[keynames[0]]))
                     
                     # cutout name
                     cutout_name = "{}-{}.fits".format( src[keynames[0]] , this_image_identfier )
