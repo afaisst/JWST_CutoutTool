@@ -181,7 +181,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
     
     '''
     #overlap_fraction_limit = 0.7
-    nan_fraction_limit = overlap_fraction_limit*1.0
+    nan_fraction_limit = 1 - overlap_fraction_limit*1.0
     
     
     if suppress_warnings: warnings.filterwarnings("ignore")
@@ -260,8 +260,8 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
                         cutout = tmp.data
 
                         # check overlap (if cutting is successful)
-                        overlap_fraction = round(1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1]),1)
-                        fraction_nan = round(len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1]),1)
+                        overlap_fraction = round(1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1]),2)
+                        fraction_nan = round(len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1]),2)
                         if (overlap_fraction < overlap_fraction_limit) | (fraction_nan > nan_fraction_limit):
                             if verbose > 1: print("-> Not enough overlap ({}) or too many NaN ({}) to create cutout.".format(overlap_fraction,fraction_nan))
                             FLAG = 2
