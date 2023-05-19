@@ -1,4 +1,4 @@
-import os
+import os, glob
 from webbrowser import get
 import numpy as np
 
@@ -12,6 +12,10 @@ from astropy.wcs import WCS
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
 from shapely import MultiPolygon
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.patheffects as path_effects
 
 import warnings
 
@@ -136,8 +140,89 @@ mosaic_nircam_f150w_COSMOS-Web_30mas_A9_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS
         
     return(image_table)
 
+def plot_cutouts(results_cons , cutout_path , output_path , SHOWPLOT , verbose):
+    '''
+    Creates plots (in PDF) of cutouts for a given source list.
 
-def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_fraction_limit , keynames , verbose , suppress_warnings):
+    Parameters
+    -----------
+    results_cons : `astropy table`
+        Consolidated list output by cutout_jwst()
+    cutout_path: `str`
+        Path where the cutouts are stored
+    output_path: `str`
+        Path where PDF plots are saved.
+    SHOWPLOT: `bool`
+        If set to `True`, plots are displayed.
+    verbose: `int`
+        How much to talk. -1 = no talk, 0 = some talk, 1 = more talking
+    
+    '''
+
+    for tab in results_cons:
+    
+        if tab["survey"] != 'none':
+            if verbose >= 0: print("Plotting {}".format(tab["ID"]))
+            
+            surveys = tab["survey"].split(",")
+            bands = tab["band"].split(",")
+            tiles = tab["tile"].split(",")
+            
+            ## Gather images
+            fn = []
+            for survey,band,tile in zip(surveys,bands,tiles):
+                tmp =  glob.glob(os.path.join(cutout_path, "{}-{}-*-{}-*-{}*.fits".format(tab["ID"],survey,tile,band) ) )
+                if len(tmp) > 1:
+                    print("There is a problem: multiple images found - Abort.")
+                    return(False)
+                else:
+                    fn.append(tmp[0])
+                    
+                    
+            ## Load images
+            imgs = []
+            pixscales = []
+            for ff in fn:
+                with fits.open(ff) as hdul:
+                    pixscales.append( hdul["SCI"].header["CDELT1"]*3600 )
+                    imgs.append( hdul["SCI"].data )
+            
+            ## Plot Images
+            ncutouts = len(imgs)
+            fig = plt.figure(figsize=(ncutouts*3,3))
+            axs = [ fig.add_subplot(1,ncutouts,ii+1) for ii in range(ncutouts) ]
+
+            for mm,img in enumerate(imgs):
+                
+                axs[mm].imshow(img,
+                            origin="lower",
+                            #norm=ImageNormalize(stretch=LogStretch()),
+                            cmap = plt.get_cmap('Greys')
+                            )
+
+                corner = img.shape[0]*0.1
+                axs[mm].plot([corner,corner+(1/pixscales[mm])],[corner,corner] , "-", linewidth=3 , color="black")
+                axs[mm].text(corner+(1/pixscales[mm])/2 , corner , r"1$^{\prime\prime}$", va="bottom",ha="center" , fontsize=12)
+
+                axs[mm].set_title(tab["ID"] , fontsize=10)
+
+                txt1 = axs[mm].text(0.05,0.95 , "{}-{}-{}".format(surveys[mm],tiles[mm],bands[mm]) , va="top",ha="left" , fontsize=10 , transform=axs[mm].transAxes)
+                txt1.set_path_effects([path_effects.Stroke(linewidth=5, foreground='white'),
+                    path_effects.Normal()])
+
+
+                axs[mm].set_xticklabels([])
+                axs[mm].set_yticklabels([])
+
+            plt.savefig(os.path.join( output_path , "{}_jwstcollage.pdf".format(tab["ID"]) ) , bbox_inches="tight")
+            
+            if SHOWPLOT:
+                plt.show()
+            else:
+                plt.close()
+
+
+def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_fraction_limit , keynames , verbose , MAKEPLOT , suppress_warnings):
     '''
     Creates cutouts for an JWST image for all sources in a catalog for which there is overlap.
     Stores the cutouts in a directory with user-defined naming.
@@ -167,9 +252,11 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
         example ["NUMBER","ALPHA_J2000","DELTA_J2000"]
     verbose: `int`
         Set to 0 to be silent. Set to 1 to talk a bit. Set to 2 to talk a lot.
+    MAKEPLOT: `bool`
+        Set to `True` to plot the resulting cutouts (done at the end of the cutout process).
     suppress_warnings: `bool`
         If set to True, suppress all warnings
-    
+        
     Returns
     --------
     Saves the image cutout in the output directory.
@@ -362,9 +449,15 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
         else:
             all_tab_consolidated.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],"none","none","none"])
 
+    if MAKEPLOT:
+        if verbose > 0: print("Create cutout plots...")
+        _ = plot_cutouts(results_cons = all_tab_consolidated ,
+                         cutout_path = output_path ,
+                         output_path = output_path ,
+                         SHOWPLOT = False,
+                         verbose=verbose)
 
-
-    if verbose > 0: print("++++++ ALL DONE FOR THIS IMAGE +++++++")
+    if verbose > 0: print("++++++ ALL DONE +++++++")
 
 
     if suppress_warnings: warnings.filterwarnings("default")
