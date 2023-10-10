@@ -1,6 +1,7 @@
 import os, glob
-from webbrowser import get
+#from webbrowser import get
 import numpy as np
+from tqdm import tqdm
 
 from astropy.io import fits
 from astropy.table import Table
@@ -9,9 +10,9 @@ from astropy import units as u
 from astropy.coordinates import SkyCoord
 from astropy.wcs import WCS
 
-from shapely.geometry import Point
-from shapely.geometry.polygon import Polygon
-from shapely import MultiPolygon
+#from shapely.geometry import Point
+#from shapely.geometry.polygon import Polygon
+#from shapely import MultiPolygon
 
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -166,7 +167,7 @@ def plot_cutouts(results_cons , cutout_path , output_path , SHOWPLOT , verbose):
     
     '''
 
-    for tab in results_cons:
+    for tab in tqdm(results_cons):
     
         if tab["survey"] != 'none':
             if verbose >= 0: print("Plotting {}".format(tab["ID"]))
@@ -293,7 +294,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
     all_tab_combined = Table(names=["ID","RA","DEC"] + tab_keys , dtype=[str , float , float] + tab_dtypes)
 
     ## Go through all images and create cutouts for all possible sources.
-    for ii in range(len(image_path_table)):
+    for ii in tqdm(range(len(image_path_table))):
 
         ## Start table for this image
         this_tab = Table(names=["ID","RA","DEC","identifier","flag"] , dtype=[str , float , float, str , int])
