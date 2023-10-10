@@ -275,7 +275,6 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
     - Flag (0=good, 1=something wrong, 2=no overlap)
     
     '''
-    #overlap_fraction_limit = 0.7
     nan_fraction_limit = 1 - overlap_fraction_limit*1.0
     
     
