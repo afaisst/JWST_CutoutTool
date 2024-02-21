@@ -62,13 +62,13 @@ mosaic_miri_f770w_PRIMER-COSMOS_epoch1_60mas_v0_2_i2d.fits  mosaic_miri_f1800w_P
 '''
 
 
-
-    cosmoswebJan23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2023/v0.1/"
-    cosmoswebJan23_rawlist = '''
-mosaic_nircam_f115w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f150w_COSMOS-Web_30mas_v0_1_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f444w_COSMOS-Web_30mas_v0_1_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_epoch1_60mas_v0_2_i2d.fits
-    '''
+    ## January 23 data is not included in the January 24 tiles.
+    #cosmoswebJan23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2023/v0.1/"
+    #cosmoswebJan23_rawlist = '''
+#mosaic_nircam_f115w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f150w_COSMOS-Web_30mas_v0_1_i2d.fits
+#mosaic_nircam_f277w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f444w_COSMOS-Web_30mas_v0_1_i2d.fits
+#mosaic_miri_f770w_COSMOS-Web_epoch1_60mas_v0_2_i2d.fits
+#    '''
 
     cosmoswebApr23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Apr2023/v0.2/"
     cosmoswebApr23_rawlist = '''
@@ -99,6 +99,30 @@ mosaic_miri_f770w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web
 mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
     '''
 
+    cosmoswebJan24_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2024/v0.01"
+    cosmoswebJan24_rawlist = '''mosaic_nircam_f277w_COSMOS-Web_30mas_B10_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B1_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B2_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B3_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B4_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B5_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B5_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B6_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B6_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B7_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B7_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B9_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B9_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B10_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B1_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B2_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B3_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B4_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B5_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B5_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B6_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B6_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B7_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B7_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B9_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B9_i2d.fits'''
+
+
     ## Start Table
     image_table = Table(names=["survey","band","tile","identifier","path"] , dtype=[str,str,str,str,str])
 
@@ -117,18 +141,18 @@ mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web
                             ])
         
     ## COSMOS-Web January 2023 data
-    for f in cosmoswebJan23_rawlist.split():    
-        identifier = "CW-{}-Z0-{}-{}-{}".format( "Jan23",
-                                            f.split("_")[4],
-                                            f.split("_")[1],
-                                            f.split("_")[2]
-                                            )
-        image_table.add_row(["CW",
-                            f.split("_")[2],
-                            "Z0",
-                            identifier ,
-                            os.path.join(cosmoswebJan23_mainpath , f)
-                            ])
+    #for f in cosmoswebJan23_rawlist.split():    
+    #    identifier = "CW-{}-Z0-{}-{}-{}".format( "Jan23",
+    #                                        f.split("_")[4],
+    #                                        f.split("_")[1],
+    #                                        f.split("_")[2]
+    #                                        )
+    #    image_table.add_row(["CW",
+    #                        f.split("_")[2],
+    #                        "Z0",
+    #                        identifier ,
+    #                        os.path.join(cosmoswebJan23_mainpath , f)
+    #                        ])
         
 
     ## COSMOS-Web April 2023 data
@@ -144,6 +168,21 @@ mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web
                             f.split("_")[5],
                             identifier ,
                             os.path.join(cosmoswebApr23_mainpath , f)
+                            ])
+        
+    ## COSMOS-Web January 2024 data
+    for f in cosmoswebJan24_rawlist.split():    
+        identifier = "CW-{}-{}-{}-{}-{}".format( "Jan24",
+                                            f.split("_")[5],
+                                            f.split("_")[4],
+                                            f.split("_")[1],
+                                            f.split("_")[2]
+                                            )
+        image_table.add_row(["CW",
+                            f.split("_")[2],
+                            f.split("_")[5],
+                            identifier ,
+                            os.path.join(cosmoswebJan24_mainpath , f)
                             ])
         
     return(image_table)
