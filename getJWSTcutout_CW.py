@@ -62,7 +62,8 @@ mosaic_miri_f770w_PRIMER-COSMOS_epoch1_60mas_v0_2_i2d.fits  mosaic_miri_f1800w_P
 '''
 
 
-    ## January 23 data is not included in the January 24 tiles.
+    ## January 23 data is now included in the January 24 tiles.
+    ## Don't need this anymore.
     #cosmoswebJan23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2023/v0.1/"
     #cosmoswebJan23_rawlist = '''
 #mosaic_nircam_f115w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f150w_COSMOS-Web_30mas_v0_1_i2d.fits
@@ -91,12 +92,8 @@ mosaic_nircam_f444w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_nircam_f444w_COSMO
 mosaic_nircam_f444w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
 mosaic_nircam_f444w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
 mosaic_nircam_f444w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A5_v0_2_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
+mosaic_nircam_f444w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A9_v0_2_i2d.fits   mosaic_miri_f770w_COSMOS-Web_30mas_A10_v0_3_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A9_v0_3_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A7_v0_3_i2d.fits
     '''
 
     cosmoswebJan24_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2024/v0.01"
@@ -116,7 +113,16 @@ mosaic_nircam_f277w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_
 mosaic_nircam_f444w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B6_i2d.fits
 mosaic_nircam_f444w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B7_i2d.fits
 mosaic_nircam_f444w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B8_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B9_i2d.fits'''
+mosaic_nircam_f444w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B9_i2d.fits    mosaic_miri_f770w_COSMOS-Web_30mas_A1_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B2_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A2_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B3_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A3_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B4_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B5_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A5_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B6_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A6_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B7_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A8_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B8_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_B10_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B9_v0_6_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_B1_v0_6_i2d.fits
+'''
 
 
     ## Start Table
@@ -213,56 +219,68 @@ def plot_cutouts(results_cons , cutout_path , output_path , SHOWPLOT , verbose):
             
             ## Gather images
             fn = []
+            bands_use = []
+            surveys_use = []
+            tiles_use = []
             for survey,band,tile in zip(surveys,bands,tiles):
                 tmp =  glob.glob(os.path.join(cutout_path, "{}-{}-*-{}-*-{}*.fits".format(tab["ID"],survey,tile,band) ) )
                 if len(tmp) > 1:
                     print("There is a problem: multiple images found - Abort.")
-                    return(False)
+                elif len(tmp) == 0:
+                    print("No image found although in catalog.")
                 else:
                     fn.append(tmp[0])
-                    
-                    
-            ## Load images
-            imgs = []
-            pixscales = []
-            for ff in fn:
-                with fits.open(ff) as hdul:
-                    pixscales.append( hdul["SCI"].header["CDELT1"]*3600 )
-                    imgs.append( hdul["SCI"].data )
-            
-            ## Plot Images
-            ncutouts = len(imgs)
-            fig = plt.figure(figsize=(ncutouts*3,3))
-            axs = [ fig.add_subplot(1,ncutouts,ii+1) for ii in range(ncutouts) ]
+                    bands_use.append(band)
+                    surveys_use.append(survey)
+                    tiles_use.append(tile)
 
-            for mm,img in enumerate(imgs):
-                
-                axs[mm].imshow(img,
-                            origin="lower",
-                            #norm=ImageNormalize(stretch=LogStretch()),
-                            cmap = plt.get_cmap('Greys')
-                            )
-
-                corner = img.shape[0]*0.1
-                axs[mm].plot([corner,corner+(1/pixscales[mm])],[corner,corner] , "-", linewidth=3 , color="black")
-                axs[mm].text(corner+(1/pixscales[mm])/2 , corner , r"1$^{\prime\prime}$", va="bottom",ha="center" , fontsize=12)
-
-                axs[mm].set_title(tab["ID"] , fontsize=10)
-
-                txt1 = axs[mm].text(0.05,0.95 , "{}-{}-{}".format(surveys[mm],tiles[mm],bands[mm]) , va="top",ha="left" , fontsize=10 , transform=axs[mm].transAxes)
-                txt1.set_path_effects([path_effects.Stroke(linewidth=5, foreground='white'),
-                    path_effects.Normal()])
-
-
-                axs[mm].set_xticklabels([])
-                axs[mm].set_yticklabels([])
-
-            plt.savefig(os.path.join( output_path , "{}_jwstcollage.pdf".format(tab["ID"]) ) , bbox_inches="tight")
-            
-            if SHOWPLOT:
-                plt.show()
+            if len(fn) == 0: # double check that there are any images. 
+                SKIP = True
             else:
-                plt.close()
+                SKIP = False
+                    
+            if SKIP == False:
+                ## Load images
+                imgs = []
+                pixscales = []
+                for ff in fn:
+                    with fits.open(ff) as hdul:
+                        pixscales.append( hdul["SCI"].header["CDELT1"]*3600 )
+                        imgs.append( hdul["SCI"].data )
+                
+                ## Plot Images
+                ncutouts = len(imgs)
+                fig = plt.figure(figsize=(ncutouts*3,3))
+                axs = [ fig.add_subplot(1,ncutouts,ii+1) for ii in range(ncutouts) ]
+
+                for mm,img in enumerate(imgs):
+                    
+                    axs[mm].imshow(img,
+                                origin="lower",
+                                #norm=ImageNormalize(stretch=LogStretch()),
+                                cmap = plt.get_cmap('Greys')
+                                )
+
+                    corner = img.shape[0]*0.1
+                    axs[mm].plot([corner,corner+(1/pixscales[mm])],[corner,corner] , "-", linewidth=3 , color="black")
+                    axs[mm].text(corner+(1/pixscales[mm])/2 , corner , r"1$^{\prime\prime}$", va="bottom",ha="center" , fontsize=12)
+
+                    axs[mm].set_title(tab["ID"] , fontsize=10)
+
+                    txt1 = axs[mm].text(0.05,0.95 , "{}-{}-{}".format(surveys_use[mm],tiles_use[mm],bands_use[mm]) , va="top",ha="left" , fontsize=10 , transform=axs[mm].transAxes)
+                    txt1.set_path_effects([path_effects.Stroke(linewidth=5, foreground='white'),
+                        path_effects.Normal()])
+
+
+                    axs[mm].set_xticklabels([])
+                    axs[mm].set_yticklabels([])
+
+                plt.savefig(os.path.join( output_path , "{}_jwstcollage.pdf".format(tab["ID"]) ) , bbox_inches="tight")
+                
+                if SHOWPLOT:
+                    plt.show()
+                else:
+                    plt.close()
 
 
 def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_fraction_limit , keynames , verbose , MAKEPLOT , suppress_warnings):
