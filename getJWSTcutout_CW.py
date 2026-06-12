@@ -52,140 +52,155 @@ def get_ListOfImages():
     
     '''
 
-    primer_cosmos_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/PRIMER-COSMOS/v0.2/"
-    primer_cosmos_rawlist = '''
-mosaic_nircam_f090w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits    mosaic_nircam_f115w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits
-mosaic_nircam_f150w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits    mosaic_nircam_f200w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits
-mosaic_nircam_f277w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits    mosaic_nircam_f356w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits
-mosaic_nircam_f410m_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits    mosaic_nircam_f444w_PRIMER-COSMOS_epoch1_30mas_v0_2_i2d.fits
-mosaic_miri_f770w_PRIMER-COSMOS_epoch1_60mas_v0_2_i2d.fits  mosaic_miri_f1800w_PRIMER-COSMOS_epoch1_60mas_v0_2_i2d.fits
-'''
 
-
-    ## January 23 data is now included in the January 24 tiles.
-    ## Don't need this anymore.
-    #cosmoswebJan23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2023/v0.1/"
-    #cosmoswebJan23_rawlist = '''
-#mosaic_nircam_f115w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f150w_COSMOS-Web_30mas_v0_1_i2d.fits
-#mosaic_nircam_f277w_COSMOS-Web_30mas_v0_1_i2d.fits  mosaic_nircam_f444w_COSMOS-Web_30mas_v0_1_i2d.fits
-#mosaic_miri_f770w_COSMOS-Web_epoch1_60mas_v0_2_i2d.fits
-#    '''
-
-    cosmoswebApr23_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Apr2023/v0.2/"
-    cosmoswebApr23_rawlist = '''
-    mosaic_nircam_f115w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_A5_v0_2_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_A5_v0_2_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A5_v0_2_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A9_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A10_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A5_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A1_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A6_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A2_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A7_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A3_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A8_v0_2_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_A4_v0_2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A9_v0_2_i2d.fits   mosaic_miri_f770w_COSMOS-Web_30mas_A10_v0_3_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_A9_v0_3_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A7_v0_3_i2d.fits
+    primerNIRCAM_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/PRIMER-COSMOS/NIRCAM/v0.4"
+    primerNIRCAM_rawlist = '''
+    mosaic_nircam_f090w_PRIMER-COSMOS_30mas_sci.fits	mosaic_nircam_f356w_PRIMER-COSMOS_30mas_sci.fits
+mosaic_nircam_f200w_PRIMER-COSMOS_30mas_sci.fits	mosaic_nircam_f410m_PRIMER-COSMOS_30mas_sci.fits
     '''
 
-    cosmoswebJan24_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/images_Jan2024/v0.01"
-    cosmoswebJan24_rawlist = '''mosaic_nircam_f115w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_B5_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_B6_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_B7_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_B8_i2d.fits
-mosaic_nircam_f115w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f115w_COSMOS-Web_30mas_B9_i2d.fits    mosaic_nircam_f150w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_B5_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_B6_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_B7_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_B8_i2d.fits
-mosaic_nircam_f150w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f150w_COSMOS-Web_30mas_B9_i2d.fits   mosaic_nircam_f277w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B5_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B6_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B7_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B8_i2d.fits
-mosaic_nircam_f277w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B9_i2d.fits    mosaic_nircam_f444w_COSMOS-Web_30mas_B10_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B5_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_B1_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B6_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_B2_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B7_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_B3_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B8_i2d.fits
-mosaic_nircam_f444w_COSMOS-Web_30mas_B4_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B9_i2d.fits    mosaic_miri_f770w_COSMOS-Web_30mas_A1_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B2_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A2_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B3_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A3_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B4_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A4_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B5_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A5_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B6_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A6_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B7_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_A8_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B8_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_B10_v0_6_i2d.fits	mosaic_miri_f770w_COSMOS-Web_30mas_B9_v0_6_i2d.fits
-mosaic_miri_f770w_COSMOS-Web_30mas_B1_v0_6_i2d.fits
-'''
+    primerMIRI_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/PRIMER-COSMOS/MIRI/v0.4"
+    primerMIRI_rawlist = '''
+    mosaic_miri_f1800w_PRIMER-COSMOS_full_30mas_v0_4_i2d.fits
+    '''
+
+
+    cosmoswebNIRCAM_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/NIRCam/v0.8/"
+    cosmoswebNIRCAM_rawlist = '''
+mosaic_nircam_f115w_COSMOS-Web_30mas_A1_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A1_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A10_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A10_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A2_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A2_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A3_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A3_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A4_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A4_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A5_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A5_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A6_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A6_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A7_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A7_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A8_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A8_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_A9_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_A9_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B1_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B1_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B10_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B10_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B2_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B2_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B3_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B3_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B4_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B4_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B5_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B5_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B6_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B6_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B7_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B7_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B8_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B8_v0_8_i2d.fits
+mosaic_nircam_f115w_COSMOS-Web_30mas_B9_v0_8_i2d.fits	mosaic_nircam_f277w_COSMOS-Web_30mas_B9_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A1_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A1_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A10_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A10_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A2_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A2_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A3_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A3_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A4_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A4_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A5_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A5_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A6_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A6_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A7_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A7_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A8_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A8_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_A9_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_A9_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B1_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B1_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B10_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B10_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B2_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B2_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B3_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B3_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B4_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B4_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B5_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B5_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B6_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B6_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B7_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B7_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B8_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B8_v0_8_i2d.fits
+mosaic_nircam_f150w_COSMOS-Web_30mas_B9_v0_8_i2d.fits	mosaic_nircam_f444w_COSMOS-Web_30mas_B9_v0_8_i2d.fits
+    '''
+
+    cosmoswebMIRI_mainpath = "/Volumes/MyBook_18TB/data/Work/COSMOS/COSMOS-Web/data/MIRI/v1.0"
+    cosmoswebMIRI_rawlist = '''
+    mosaic_miri_f770w_COSMOS-Web_30mas_A1_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web_30mas_B4_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A10_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web_30mas_B5_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A4_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web_30mas_B6_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A5_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web_30mas_B9_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A6_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_A2_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A7_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_A3_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A8_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_B2_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_A9_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_B3_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_B1_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_B7_v1.0_i2d.fits
+mosaic_miri_f770w_COSMOS-Web_30mas_B10_v1.0_i2d.fits		mosaic_miri_f770w_COSMOS-Web+PRIMER_30mas_B8_v1.0_i2d.fits
+    '''
 
 
     ## Start Table
     image_table = Table(names=["survey","band","tile","identifier","path"] , dtype=[str,str,str,str,str])
 
     ## Primer-COSMOS
-    for f in primer_cosmos_rawlist.split():    
-        identifier = "PC-{}-Z0-{}-{}-{}".format( f.split("_")[4],
-                                            f.split("_")[5],
-                                            f.split("_")[1],
-                                            f.split("_")[2]
-                                            )
-        image_table.add_row(["PC",
-                            f.split("_")[2],
-                            "Z0",
-                            identifier ,
-                            os.path.join(primer_cosmos_mainpath , f)
-                            ])
-        
-    ## COSMOS-Web January 2023 data
-    #for f in cosmoswebJan23_rawlist.split():    
-    #    identifier = "CW-{}-Z0-{}-{}-{}".format( "Jan23",
-    #                                        f.split("_")[4],
+    #for f in primer_cosmos_rawlist.split():    
+    #    identifier = "PC-{}-{}-{}-{}".format( f.split("_")[4], # 
+    #                                        f.split("_")[5],
     #                                        f.split("_")[1],
     #                                        f.split("_")[2]
     #                                        )
-    #    image_table.add_row(["CW",
+    #    image_table.add_row(["PC",
     #                        f.split("_")[2],
     #                        "Z0",
     #                        identifier ,
-    #                        os.path.join(cosmoswebJan23_mainpath , f)
+    #                        os.path.join(primer_cosmos_mainpath , f)
     #                        ])
-        
 
-    ## COSMOS-Web April 2023 data
-    for f in cosmoswebApr23_rawlist.split():    
-        identifier = "CW-{}-{}-{}-{}-{}".format( "Apr23",
-                                            f.split("_")[5],
-                                            f.split("_")[4],
-                                            f.split("_")[1],
-                                            f.split("_")[2]
+    ## PRIMER NIRCAM
+    for f in primerNIRCAM_rawlist.split():    
+        identifier = "PC-{}-{}-{}-{}-{}".format("Z0", # tile (just call it Z0 for PRIMER/COSMOS)
+                                            f.split("_")[4], # mas
+                                            f.split("_")[1], # instrument
+                                            f.split("_")[2], # filter
+                                            "v04" # version (HARD CODED!)
                                             )
         image_table.add_row(["CW",
-                            f.split("_")[2],
-                            f.split("_")[5],
+                            f.split("_")[2], # filter
+                            "PC", # tile (Primer/COSMOS)
                             identifier ,
-                            os.path.join(cosmoswebApr23_mainpath , f)
+                            os.path.join(primerNIRCAM_mainpath , f)
                             ])
-        
-    ## COSMOS-Web January 2024 data
-    for f in cosmoswebJan24_rawlist.split():    
-        identifier = "CW-{}-{}-{}-{}-{}".format( "Jan24",
-                                            f.split("_")[5],
-                                            f.split("_")[4],
-                                            f.split("_")[1],
-                                            f.split("_")[2]
+
+    ## PRIMER MIRI
+    for f in primerMIRI_rawlist.split():    
+        identifier = "PC-{}-{}-{}-{}-{}".format("Z0", # tile (just call it Z0 for PRIMER/COSMOS)
+                                            f.split("_")[5], # mas
+                                            f.split("_")[1], # instrument
+                                            f.split("_")[2], # filter
+                                            "v04" # version (HARD CODED!)
                                             )
         image_table.add_row(["CW",
-                            f.split("_")[2],
-                            f.split("_")[5],
+                            f.split("_")[2], # filter
+                            "PC", # tile (Primer/COSMOS)
                             identifier ,
-                            os.path.join(cosmoswebJan24_mainpath , f)
+                            os.path.join(primerMIRI_mainpath , f)
                             ])
+
+    ## COSMOS-Web NIRCAM
+    for f in cosmoswebNIRCAM_rawlist.split():    
+        identifier = "CW-{}-{}-{}-{}-{}".format(f.split("_")[5], # tile
+                                            f.split("_")[4], # mas
+                                            f.split("_")[1], # instrument
+                                            f.split("_")[2], # filter
+                                            "v08" # version (HARD CODED!)
+                                            )
+        image_table.add_row(["CW",
+                            f.split("_")[2], # filter
+                            f.split("_")[5], # tile
+                            identifier ,
+                            os.path.join(cosmoswebNIRCAM_mainpath , f)
+                            ])
+
+    ## COSMOS-Web MIRI
+    for f in cosmoswebMIRI_rawlist.split():    
+        identifier = "CW-{}-{}-{}-{}-{}".format(f.split("_")[5], # tile
+                                            f.split("_")[4], # mas
+                                            f.split("_")[1], # instrument
+                                            f.split("_")[2], # filter
+                                            "v08" # version (HARD CODED!)
+                                            )
+        image_table.add_row(["CW",
+                            f.split("_")[2], # filter
+                            f.split("_")[5], # tile
+                            identifier ,
+                            os.path.join(cosmoswebMIRI_mainpath , f)
+                            ])
+
         
     return(image_table)
 
@@ -211,7 +226,7 @@ def plot_cutouts(results_cons , cutout_path , output_path , SHOWPLOT , verbose):
     for tab in tqdm(results_cons):
     
         if tab["survey"] != 'none':
-            if verbose >= 0: print("Plotting {}".format(tab["ID"]))
+            if verbose > 0: print("Plotting {}".format(tab["ID"]))
             
             surveys = tab["survey"].split(",")
             bands = tab["band"].split(",")
@@ -225,9 +240,9 @@ def plot_cutouts(results_cons , cutout_path , output_path , SHOWPLOT , verbose):
             for survey,band,tile in zip(surveys,bands,tiles):
                 tmp =  glob.glob(os.path.join(cutout_path, "{}-{}-*-{}-*-{}*.fits".format(tab["ID"],survey,tile,band) ) )
                 if len(tmp) > 1:
-                    print("There is a problem: multiple images found - Abort.")
+                    if verbose > 0: print("There is a problem: multiple images found - Abort.")
                 elif len(tmp) == 0:
-                    print("No image found although in catalog.")
+                    if verbose > 0: print("No image found although in catalog.")
                 else:
                     fn.append(tmp[0])
                     bands_use.append(band)
@@ -357,9 +372,8 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
 
         ## Open image
         with fits.open(this_image_path) as hdul:
-            #hdul.info()
 
-            if verbose >= 0: print("+++++++ Making cutouts for image {} ({}) +++++++".format(this_image_path.split("/")[-1],this_image_identfier))
+            if verbose > 0: print("+++++++ Making cutouts for image {} ({}) +++++++".format(this_image_path.split("/")[-1],this_image_identfier))
 
             ## Cutout for each source on this image.
             for src in srcs:
@@ -374,48 +388,63 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
                 hdus_new = []
 
                 ## Go go through each HDU and create the cutouts
+                hh_counter = 0
                 for hh,hduext in enumerate(hduexts):
                     if verbose > 1: print(" -> Processing HDU extension {}".format(hduext))
                     
-                    # get header: Note that we get the header
-                    # that contains the WCS information separately. We
-                    # assume that this is the first one in the list.
-                    hdr = hdul[hduext].header
-                    hdr0 = hdul[hduexts[0]].header
-                    
-                    # get WCS: same here, get the header that
-                    # contains the WCS information separately. We 
-                    # assume that is the first one in the list.
-                    #hdr_wcs = WCS(hdul[hduext].header)
-                    hdr0_wcs = WCS(hdul[1].header)
+                    # Now, some images only have the SCI extension
+                    if hduext in [hdu.name for hdu in hdul]:
+                        if verbose > 1: print(f"HDU extension '{hduext}' exists.")
 
-                    # Compute the pixel scale and the size of the cutouts in pixels.
-                    pixscale = [hdr0["CDELT1"]*3600 , hdr0["CDELT2"]*3600]
-                    size = u.Quantity((cutout_size_arcsec/pixscale[0],cutout_size_arcsec/pixscale[1]), u.pixel)
+                        # get header: Note that we get the header
+                        # that contains the WCS information separately. We
+                        # assume that this is the first one in the list.
+                        hdr = hdul[hduext].header
+                        hdr0 = hdul[hduexts[0]].header
+                        
+                        # get WCS: same here, get the header that
+                        # contains the WCS information separately. We 
+                        # assume that is the first one in the list.
+                        #hdr_wcs = WCS(hdul[hduext].header)
+                        hdr0_wcs = WCS(hdul['SCI'].header)
+
+                        # Compute the pixel scale and the size of the cutouts in pixels.
+                        pixscale = [hdr0["CDELT1"]*3600 , hdr0["CDELT2"]*3600]
+                        size = u.Quantity((cutout_size_arcsec/pixscale[0],cutout_size_arcsec/pixscale[1]), u.pixel)
+
+                        FLAG = 0
+
+                    else:
+                        if verbose > 1: print(f"HDU extension '{hduext}' *does not* exist.")
+                        FLAG = 3
+
+                    
 
                     # create the cutouts. Assign a FLAG to it, such that
                     # FLAG = 0 if everything is OK
                     # FLAG = 1 if no cutout can be created because of any error (e.g., negative
                     # coordinate because the source is in the wrong fiels such as GOODS-N vs. COSMOS)
-                    # FLAG = 2 if no cutout can be create because not enough overlap (user defined)
-                    FLAG = 0
-                    try:
+                    # FLAG = 2 if no cutout can be created because not enough overlap (user defined)
+                    # FLAG = 3 if no cutout can be created because HDU extension does not exist.
+                    
+                    if FLAG == 0:
+                        try:
 
-                        # create cutout
-                        position = SkyCoord(src[keynames[1]] , src[keynames[2]] , unit="degree" , frame='icrs')
-                        tmp = Cutout2D(hdul[hduext].data, position, size, wcs=hdr0_wcs , copy=True, mode="partial")
-                        cutout = tmp.data
+                            # create cutout
+                            position = SkyCoord(src[keynames[1]] , src[keynames[2]] , unit="degree" , frame='icrs')
+                            tmp = Cutout2D(hdul[hduext].data, position, size, wcs=hdr0_wcs , copy=True, mode="partial")
+                            cutout = tmp.data
 
-                        # check overlap (if cutting is successful)
-                        overlap_fraction = round(1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1]),2)
-                        fraction_nan = round(len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1]),2)
-                        if (overlap_fraction < overlap_fraction_limit) | (fraction_nan > nan_fraction_limit):
-                            if verbose > 1: print("-> Not enough overlap ({}) or too many NaN ({}) to create cutout.".format(overlap_fraction,fraction_nan))
-                            FLAG = 2
+                            # check overlap (if cutting is successful)
+                            overlap_fraction = round(1 - len(np.where(cutout == 0)[0]) / (cutout.shape[0]*cutout.shape[1]),2)
+                            fraction_nan = round(len(np.where(np.isnan(cutout))[0]) / (cutout.shape[0]*cutout.shape[1]),2)
+                            if (overlap_fraction < overlap_fraction_limit) | (fraction_nan > nan_fraction_limit):
+                                if verbose > 1: print("-> Not enough overlap ({}) or too many NaN ({}) to create cutout.".format(overlap_fraction,fraction_nan))
+                                FLAG = 2
 
-                    except:
-                        if verbose > 1: print("-> No cutout can be made (wrong field or other error)")
-                        FLAG = 1
+                        except:
+                            if verbose > 1: print("-> No cutout can be made (wrong field or other error)")
+                            FLAG = 1
 
                     
                     # Assemble this part of the HDU and append.
@@ -425,7 +454,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
                     if (FLAG == 0) | (FLAG == 2):
                         
                         # Make the first HDU extension the primary.
-                        if hh == 0:
+                        if hh_counter == 0:
                             hdu_new = fits.PrimaryHDU(data = cutout.copy() , header=hdr.copy())
                         else:
                             hdu_new = fits.ImageHDU(data = cutout.copy() , header=hdr.copy())
@@ -439,6 +468,9 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
 
                         # Append flag
                         FLAGS.append(FLAG)
+
+                        # change counter (only if HDU is created successfully)
+                        hh_counter += 1
 
                         if verbose > 1: print("-> Cutout created.")
 
@@ -461,14 +493,22 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
                 
                 if (FLAGS[sel_hdu_test] == 0) & (2 not in FLAGS):
 
-                    if verbose >=0: print("-> Creating final cutout for {}".format(src[keynames[0]]))
+                    if verbose > 0: print("-> Creating final cutout for {}".format(src[keynames[0]]))
+
+                    ## Now gather the good EXT (as some might not exist)
+                    sel_ext_good = np.where(np.asarray(FLAGS) != 3)[0]
+                    #if len(sel_ext_good) == 1: sel_ext_good = sel_ext_good[0]
+                    if verbose > 1: print(f"Good Extensions included: ", np.asarray(hduexts)[sel_ext_good])
+                    hdus_new_clean = [hdus_new[sel] for sel in sel_ext_good ]
+                    
+                    
                     
                     # cutout name
                     cutout_name = "{}-{}.fits".format( src[keynames[0]] , this_image_identfier )
                     if verbose > 0: print("-> Assembling final HDUL and save as {}".format(cutout_name))
 
                     # and save
-                    hdul_new = fits.HDUList(hdus_new)
+                    hdul_new = fits.HDUList(hdus_new_clean)
                     hdul_new.writeto(os.path.join( output_path , cutout_name ) , overwrite=True)
                     
                 this_tab.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],this_image_identfier,FLAGS[sel_hdu_test] ])
@@ -489,12 +529,13 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
 
     ## Create Consolidated Table
     all_tab_consolidated = Table(names=["ID","RA","DEC","survey","band","tile"] , dtype=[str,float,float,str,str,str])
+
     for ii,src in enumerate(srcs):
         this_row = all_tab_combined[tab_keys][ii]
         sel_good = np.where( np.asarray(list(this_row)) == 0)[0]
         if len(sel_good) == 1:
             this_survey = tab_keys[sel_good[0]].split("_flag")[0].split("-")[0]
-            this_band = tab_keys[sel_good[0]].split("_flag")[0].split("-")[5]
+            this_band = tab_keys[sel_good[0]].split("_flag")[0].split("-")[4]
             this_tile = tab_keys[sel_good[0]].split("_flag")[0].split("-")[2]
             all_tab_consolidated.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],this_survey,this_band,this_tile])
         elif len(sel_good) > 1:
@@ -503,7 +544,7 @@ def cutout_jwst(srcs , hduexts , output_path , cutout_size_arcsec , overlap_frac
             this_tiles = []
             for sel in sel_good:
                 this_surveys.append( tab_keys[sel].split("_flag")[0].split("-")[0] )
-                this_bands.append( tab_keys[sel].split("_flag")[0].split("-")[5] )
+                this_bands.append( tab_keys[sel].split("_flag")[0].split("-")[4] )
                 this_tiles.append( tab_keys[sel].split("_flag")[0].split("-")[2] )
             all_tab_consolidated.add_row([src[keynames[0]],src[keynames[1]],src[keynames[2]],",".join(this_surveys),",".join(this_bands),",".join(this_tiles)])
         else:
